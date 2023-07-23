@@ -1,0 +1,7 @@
+{
+  "onReachBottomDistance": 10,
+  "usingComponents": {
+    "navBar": "/components/navBar/navBar"
+  },
+  "navigationStyle": "custom"
+}

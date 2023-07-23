@@ -1,0 +1,68 @@
+<!--pages/home/home.wxml-->
+<view class="main-container">
+  <navBar title='早上好！张三先生' background='black' color="green" back="{{true}}" home="{{false}}">
+  </navBar>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+    <block wx:for="{{banner_list}}" wx:key="*this">
+      <swiper-item>
+        <image class="swiper-img" src="{{item}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="common-top-box">
+    <view class="menubox">
+      <view class="icon-container">
+        <van-icon name="calendar-o" color="#fff" bindtap="calendarClick"/>
+        <text class="icon-font">功能1</text>
+      </view>
+      <view class="icon-container">
+        <van-icon name="column" color="#FF9933" />
+        <text class="icon-font">功能2</text>
+      </view>
+      <view class="icon-container">
+        <van-icon name="service" color="#99CCFF" />
+        <text class="icon-font">功能3</text>
+      </view>
+      <view class="icon-container">
+        <van-icon name="share" color="#00CC66"/>
+        <text class="icon-font">功能4</text>
+      </view>
+      <view class="icon-container">
+        <van-icon name="video" color="#28a6f0"/>
+        <text class="icon-font">功能5</text>
+      </view>
+    </view>
+  </view>
+  <view class="common-content">
+    <view class="loading-box" wx:if="{{gridlist.lenth==0}}">
+      <van-loading type="spinner" />
+    </view>
+    <view wx:else class="gridbox">
+      <view wx:for="{{gridlist}}" wx:key="{{item.file_id}}" class="grid-item">
+        <view data-item="{{item}}" bindtap="gotopage" class="grid-img">
+          <image class="griditem-img" src="{{item.url}}"></image>
+          <text class="grid-font">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <van-dialog
+      use-slot
+      title="功能B"
+      show="{{showDialog}}"
+      show-confirm-button="{{false}}"
+      show-cancel-button="{{false}}"
+      class="dialog"
+    >
+      <view class="dialog-content">
+        <view wx:for="{{dialogList}}" wx:key="{{item.file_id}}" class="grid-item">
+          <view data-item="{{item}}" class="grid-img" catchtap="closeDialog">
+            <image class="griditem-img" src="{{item.url}}"></image>
+            <text class="grid-font">{{item.name}}</text>
+          </view>
+        </view>  
+      </view>
+  </van-dialog>  
+  
+  
+</view>
